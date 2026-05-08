@@ -62,3 +62,23 @@ plt.show()
 
 print(f"Features discarded: {np.sum(np.abs(w) < 0.001)}/30")
 print(f"|w| ordered: {np.abs(w[order])}")
+
+# Part d: retrain and evaluate using only selected features
+mask = np.abs(w) >= 0.001
+w_sf, b_sf = solve_svm(X_train[:, mask], y_train, best_C)
+test_acc_sf = np.mean(np.sign(X_test[:, mask] @ w_sf + b_sf) == y_test)
+print(f"\nTest accuracy with selected features ({mask.sum()}/30): {test_acc_sf:.4f}")
+
+# Part e: confusion matrix
+preds = np.sign(X_test[:, mask] @ w_sf + b_sf)
+
+TP = np.sum((preds ==  1) & (y_test ==  1))  # correct malignant
+FN = np.sum((preds == -1) & (y_test ==  1))  # missed malignant
+FP = np.sum((preds ==  1) & (y_test == -1))  # false alarm
+TN = np.sum((preds == -1) & (y_test == -1))  # correct benign
+
+print(f"\nConfusion Matrix:")
+print(f"  Correct malignant: {TP}")
+print(f"  Missed malignant:  {FN}")
+print(f"  False alarm:       {FP}")
+print(f"  Correct benign:    {TN}")

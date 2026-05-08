@@ -16,6 +16,14 @@ Here we can see that we can discard 18 features and keep 12. This is using a thr
 == Part d
 With the selected features (weight greater than 0.001) we get an accuracy of 96.5%.
 == Part e
+
+Confusion Matrix:
+```
+                 | Pred Malignant  Pred Benign
+-----------------+-----------------------------
+Actual Malignant |       52             0
+Actual Benign    |       3             31
+```
 = Problem 2
 = Problem 3
 == Part a

@@ -78,7 +78,7 @@ FP = np.sum((preds ==  1) & (y_test == -1))  # false alarm
 TN = np.sum((preds == -1) & (y_test == -1))  # correct benign
 
 print(f"\nConfusion Matrix:")
-print(f"  Correct malignant: {TP}")
-print(f"  Missed malignant:  {FN}")
-print(f"  False alarm:       {FP}")
-print(f"  Correct benign:    {TN}")
+print(f"                 | Pred Malignant  Pred Benign")
+print(f"-----------------+-----------------------------")
+print(f"Actual Malignant | {TP:^14}  {FN:^11}")
+print(f"Actual Benign    | {FP:^14}  {TN:^11}")

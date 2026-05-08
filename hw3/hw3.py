@@ -37,3 +37,28 @@ w, b = solve_svm(X_train, y_train, best_C)
 test_acc = np.mean(np.sign(X_test @ w + b) == y_test)
 print(f"Test accuracy: {test_acc:.4f}")
 print(f"Nonzero weights: {np.sum(w != 0)}/30")
+
+# Part c: plot weights ordered by absolute magnitude
+import matplotlib.pyplot as plt
+
+order = np.argsort(np.abs(w))[::-1]
+plt.bar(range(len(w)), np.abs(w[order]))
+plt.xlabel("Feature index (sorted by |w|)")
+plt.ylabel("|w|")
+plt.title(f"Feature weights ordered by magnitude (C={best_C:.2f})")
+plt.tight_layout()
+plt.savefig("weights.png", dpi=150)
+plt.show()
+
+plt.figure()
+plt.bar(range(len(w)), np.abs(w[order]))
+plt.yscale("log")
+plt.xlabel("Feature index (sorted by |w|)")
+plt.ylabel("|w| (log scale)")
+plt.title(f"Feature weights ordered by magnitude - log scale (C={best_C:.2f})")
+plt.tight_layout()
+plt.savefig("weights_log.png", dpi=150)
+plt.show()
+
+print(f"Features discarded: {np.sum(np.abs(w) < 0.001)}/30")
+print(f"|w| ordered: {np.abs(w[order])}")

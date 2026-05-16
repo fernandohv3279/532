@@ -5,9 +5,13 @@ def fisher(X_train, y_train):
     # Split into C+ and C- (columns are samples)
     X = X_train[y_train ==  1].T   # n x nx
     Y = X_train[y_train == -1].T   # n x ny
+    # print(X.shape)
+    # print(Y.shape)
 
     nx = X.shape[1]
     ny = Y.shape[1]
+    # print(nx)
+    # print(ny)
 
     x_bar = X.mean(axis=1, keepdims=True)  # class mean of C+
     y_bar = Y.mean(axis=1, keepdims=True)  # class mean of C-

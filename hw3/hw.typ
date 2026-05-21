@@ -25,9 +25,21 @@ Actual Malignant |       52             0
 Actual Benign    |       3             31
 ```
 = Problem 2
+See code.
+
+Using all 30 features, Fisher DA achieves 96.51% test accuracy. Using only the 12 features selected by the SVM, it achieves 97.67% test accuracy. Slightly better, confirming that the sparse SVM feature selection is effective.
+
+Note: For this problem I used AI to generate the code.
 = Problem 3
 == Part a
+The image (1600×1200) yields 30,000 non-overlapping 8×8 patches.
 == Part b
+Dictionary initialized with K=256 atoms drawn randomly from the flattened patches.
 == Part c
+#image("ksvd_error.png")
 == Part d
+#image("ksvd_atoms.png")
 == Part e
+#image("ksvd_reconstruction.png")
+
+Note: For this problem I used AI to generate the code.
